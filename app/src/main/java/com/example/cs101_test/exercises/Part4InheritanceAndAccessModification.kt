@@ -10,7 +10,33 @@ object Part4InheritanceAndAccessModification {
     // Create 2 classes (WashingMachine and Refrigerator) that extend the Appliance class
     //      and add a method to show/print their unique features e.g. has a quick wash feature (showFeatures).
     //      The showFeatures method must print something and not be blank, but you can choose what you want it to print!
+    open class Appliance(val brand: String, var powerConsumption: Int?, var isOn: Boolean){
+        fun turnOn(){
+            isOn = true
+        }
+        fun turnOff(){
+            isOn = false
+        }
 
+        override fun toString(): String {
+            return "[brand=$brand, powerConsumption=$powerConsumption, isOn=$isOn]"
+        }
+    }
+
+    class WashingMachine(brand: String, powerConsumption: Int?, isOn: Boolean): Appliance(brand, powerConsumption, isOn){
+        fun showFeatures(){
+            println("Quickwash")
+            println("Ecowash")
+            println("SelfService")
+        }
+    }
+    class Refrigerator(brand: String, powerConsumption: Int?, isOn: Boolean): Appliance(brand, powerConsumption, isOn){
+        fun showFeatures(){
+            println("Temperature")
+            println("Selfclose")
+            println("Magnetic")
+        }
+    }
 
     // ---------------------- EXERCISE 2
     // Create a base class called Employee with properties: name, position, and salary
@@ -19,6 +45,20 @@ object Part4InheritanceAndAccessModification {
     // Implement the method work() for all classes, which prints a message indicating the type of work the employee is doing
     // E.g. an Employee.work() should print one thing and Developer.work() another
     // The work() method must print something and not be blank, but you can choose what you want it to print!
+    open class Employee(val name: String, var position: String, var salary: Double){
+        fun work(){
+
+        }
+    }
+    class Manager(name: String, position: String, salary: Double, var department: String): Employee(name, position, salary){
+
+    }
+    class Developer(name: String, position: String, salary: Double, var programmingLanguage: String): Employee(name, position, salary){
+
+    }
+    class Intern(name: String, position: String, salary: Double, var school: String): Employee(name, position, salary){
+
+    }
 
 
     // ---------------------- EXERCISE 3
